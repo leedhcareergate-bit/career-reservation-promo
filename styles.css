@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap');
+
+/* 단독 페이지에서만 문서 여백을 맞춥니다. 기존 사이트에 넣을 때는 .career-promo 블록만 사용합니다. */
+html.career-promo-page { scroll-behavior: smooth; }
+body.career-promo-page { margin: 0; background: #fff; }
+
+.career-promo {
+  --ink: #202320;
+  --text: #171918;
+  --muted: #57625d;
+  --paper: #f5f4f0;
+  --mint: #2ac1bc;
+  --mint-deep: #078d86;
+  --mint-soft: #a9e3dd;
+  --mint-wash: #e9f8f5;
+  --line: #a9aeab;
+  --error: #bd342b;
+  --max: 1180px;
+  --gutter: max(24px, calc((100vw - var(--max)) / 2));
+  --cta: 68px;
+  color: var(--text);
+  background: #fff;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  letter-spacing: -0.035em;
+  padding-bottom: var(--cta);
+  overflow-x: clip;
+}
+
+.career-promo,
+.career-promo *,
+.career-promo *::before,
+.career-promo *::after { box-sizing: border-box; }
+
+.career-promo a { color: inherit; text-decoration: none; }
+.career-promo button,
+.career-promo input { font: inherit; letter-spacing: inherit; }
+.career-promo button { color: inherit; }
+.career-promo p { margin: 1em 0; }
+.career-promo h1,
+.career-promo h2,
+.career-promo h3,
+.career-promo p { word-break: keep-all; }
+.career-promo h1,
+.career-promo h2 {
+  margin: 24px 0;
+  font-weight: 900;
+  line-height: 1.15;
+}
+.career-promo h3 { margin: 0 0 15px; }
+
+.career-promo .section-width { max-width: var(--max); margin: auto; padding-left: 24px; padding-right: 24px; }
+.career-promo .section-no,
+.career-promo .eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: var(--mint-deep);
+}
+.career-promo .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.career-promo [hidden] { display: none !important; }
+.career-promo :focus-visible { outline: 3px solid #102523; outline-offset: 3px; }
+
+/* 히어로 */
+.career-promo .hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 95px;
+  min-height: 900px;
+  padding: 120px var(--gutter);
+  background: var(--mint);
+  overflow: hidden;
+}
+.career-promo .member-greeting { margin: 24px 0 0; color: #eafffc; font-size: 15px; font-weight: 700; }
+.career-promo .hero h1 {
+  color: #fff;
+  font-size: clamp(38px, 4.8vw, 62px);
+  letter-spacing: -0.065em;
+  text-shadow: 3px 3px 0 rgba(0, 83, 79, 0.18);
+}
+.career-promo .hero h1 span { white-space: nowrap; }
+.career-promo .hero-sub { margin: 0; color: #effffd; font-size: 18px; font-weight: 400; line-height: 1.8; }
+.career-promo .primary-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 330px;
+  max-width: 100%;
+  margin-top: 48px;
+  padding: 18px 2px;
+  border-bottom: 3px solid #102523;
+  color: #102523;
+  font-weight: 900;
+}
+.career-promo .hero-visual {
+  position: relative;
+  height: 620px;
+  padding: 45px;
+  background: #d9d7cf;
+  overflow: hidden;
+}
+.career-promo .hero-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  left: 48%;
+  top: 31px;
+  width: 95px;
+  height: 28px;
+  background: rgba(255, 244, 193, 0.78);
+  transform: translateX(-50%) rotate(-3deg);
+}
+.career-promo .book {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 315px;
+  height: 430px;
+  padding: 34px 36px 34px 54px;
+  background: #f5f1e8;
+  box-shadow: 12px 15px 0 rgba(23, 25, 24, 0.16);
+  transform-origin: 50% 90%;
+  will-change: transform;
+}
+.career-promo .book::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 24px;
+  background: rgba(23, 25, 24, 0.1);
+  border-right: 3px solid var(--text);
+}
+.career-promo .book::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 8px -8px -8px 8px;
+  border-right: 4px solid var(--text);
+  border-bottom: 4px solid var(--text);
+}
+.career-promo .book span { font-size: 13px; font-weight: 900; }
+.career-promo .book i { margin-top: 26px; font-style: normal; font-size: 12px; line-height: 1.1; }
+.career-promo .book b {
+  margin: auto 0;
+  font-size: 45px;
+  font-weight: 900;
+  line-height: 1.12;
+  letter-spacing: -0.06em;
+}
+.career-promo .book em { position: relative; width: 68%; height: 3px; background: var(--text); }
+.career-promo .book em::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 0;
+  width: 42%;
+  height: 3px;
+  background: var(--text);
+}
+.career-promo .book-back {
+  top: 38px;
+  right: 35px;
+  animation: career-book-back-sway 4.2s ease-in-out infinite alternate;
+}
+.career-promo .book-front {
+  bottom: 40px;
+  left: 35px;
+  background: #c7e5dd;
+  animation: career-book-front-sway 3.6s ease-in-out infinite alternate;
+}
+.career-promo .date-line {
+  position: absolute;
+  right: 40px;
+  bottom: 15px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 900;
+}
+.career-promo .date-line i { flex: 1; height: 2px; background: var(--text); }
+@keyframes career-book-front-sway {
+  from { transform: rotate(-7deg) translateX(-3px); }
+  to { transform: rotate(-3.5deg) translateX(5px); }
+}
+@keyframes career-book-back-sway {
+  from { transform: rotate(5deg) translateX(3px); }
+  to { transform: rotate(8deg) translateX(-4px); }
+}
+
+/* 공감 */
+.career-promo .empathy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-rows: auto auto;
+  column-gap: 76px;
+  row-gap: 24px;
+  align-items: center;
+  padding: 210px var(--gutter);
+  background: #fff;
+}
+.career-promo .empathy > .section-no { grid-column: 1; grid-row: 1; align-self: end; }
+.career-promo .empathy > div:not(.company-illustration) { grid-column: 1; grid-row: 2; align-self: start; }
+.career-promo .empathy h2 { margin: 0 0 30px; font-size: 68px; letter-spacing: -0.065em; }
+.career-promo .empathy p:last-child,
+.career-promo .field-copy > p:last-child { color: var(--muted); font-size: 18px; line-height: 1.95; }
+.career-promo .company-illustration {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 340px;
+  height: 340px;
+  background: var(--mint-soft);
+  border: 3px solid var(--text);
+  box-shadow: 10px 11px 0 var(--text);
+  transform: rotate(2deg);
+}
+.career-promo .company-illustration::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -13px;
+  width: 78px;
+  height: 24px;
+  background: rgba(255, 230, 124, 0.9);
+  transform: translateX(-50%) rotate(-3deg);
+}
+.career-promo .company-illustration svg {
+  width: 90%;
+  height: 86%;
+  overflow: visible;
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.career-promo .company-illustration .sun { fill: #f7d44d; }
+.career-promo .company-illustration .building-back { fill: #fff4bf; }
+.career-promo .company-illustration .building-front { fill: #fff; }
+.career-promo .company-illustration .flag { fill: #ff704d; }
+.career-promo .company-illustration .windows { fill: var(--mint); }
+.career-promo .company-illustration .door { fill: #f7d44d; }
+.career-promo .company-illustration .tree { fill: #6dd0a2; }
+.career-promo .company-illustration span {
+  position: absolute;
+  right: -15px;
+  bottom: 22px;
+  padding: 9px 12px;
+  background: #fff;
+  border: 3px solid var(--text);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  transform: rotate(-3deg);
+}
+
+/* 자료 카드 */
+.career-promo .materials { padding: 170px 0 150px; background: var(--paper); color: var(--ink); overflow: hidden; }
+.career-promo .materials-head { display: flex; align-items: end; justify-content: space-between; }
+.career-promo .materials h2 { margin: 18px 0; font-size: 68px; letter-spacing: -0.06em; }
+.career-promo .materials-head > div > p:last-child { color: var(--muted); }
+.career-promo .card-controls { display: flex; gap: 10px; }
+.career-promo .card-controls button {
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--text);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  font-size: 20px;
+  cursor: pointer;
+}
+.career-promo .card-controls button:disabled { opacity: 0.35; cursor: default; }
+.career-promo .material-track {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 70px var(--gutter) 24px;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.career-promo .material-track::-webkit-scrollbar { display: none; }
+.career-promo .material-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 370px;
+  height: 570px;
+  padding: 30px;
+  color: var(--ink);
+  scroll-snap-align: start;
+}
+.career-promo .material-card:nth-child(1) { background: #fff; }
+.career-promo .material-card:nth-child(2) { background: var(--mint-soft); }
+.career-promo .material-card:nth-child(3) { background: #f0ded4; }
+.career-promo .material-card:nth-child(4) { background: #dce8ed; }
+.career-promo .month-label {
+  display: inline-flex;
+  width: max-content;
+  padding: 0;
+  border-bottom: 1px solid var(--text);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+}
+.career-promo .card-no { position: absolute; top: 30px; right: 30px; font-size: 11px; }
+.career-promo .card-graphic {
+  display: grid;
+  place-items: center;
+  height: 250px;
+  margin: 35px 0 25px;
+  background: rgba(255, 255, 255, 0.58);
+}
+.career-promo .card-graphic svg {
+  width: 84%;
+  height: 84%;
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.career-promo .material-card h3 { font-size: 36px; font-weight: 900; line-height: 1.25; letter-spacing: -0.05em; }
+.career-promo .material-card > p { margin-top: 8px; font-size: 15px; line-height: 1.9; }
+
+/* 계열 선택 */
+.career-promo .field-section {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  column-gap: 100px;
+  padding: 190px var(--gutter);
+  background: var(--mint-wash);
+}
+.career-promo .field-copy { position: sticky; top: 50px; height: max-content; }
+.career-promo .field-section h2 { font-size: 66px; letter-spacing: -0.06em; }
+.career-promo .field-options { display: grid; gap: 0; margin: 0; padding: 0; border: 0; min-width: 0; }
+.career-promo .field-options input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.career-promo .field-options label {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  align-items: center;
+  min-height: 112px;
+  padding: 0 32px;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.career-promo .field-options label:last-child { border-bottom: 1px solid var(--line); }
+.career-promo .field-options label:focus-within { outline: 3px solid #102523; outline-offset: -3px; }
+.career-promo .field-options input:focus { outline: none; }
+.career-promo .field-options label:has(input:checked) { background: var(--mint-soft); }
+.career-promo .field-options label:has(input:checked) b::after {
+  content: " 선택됨";
+  margin-left: 10px;
+  color: var(--ink);
+  font-size: 11px;
+}
+.career-promo .field-options span { display: flex; align-items: center; gap: 28px; }
+.career-promo .field-options b { font-size: 23px; }
+.career-promo .field-options small { color: var(--muted); }
+.career-promo .field-options i { margin-left: auto; font-style: normal; font-size: 11px; }
+.career-promo .field-feedback { grid-column: 2; min-height: 24px; margin: 22px 0 0; color: #278f84; font-size: 14px; }
+
+/* 예약 폼 */
+.career-promo .reservation { padding: 170px 24px; background: var(--paper); }
+.career-promo .reservation-inner { max-width: 920px; margin: auto; }
+.career-promo .form-intro { text-align: center; }
+.career-promo .form-intro h2 { font-size: 62px; letter-spacing: -0.06em; }
+.career-promo .form-intro > p:last-child { color: var(--muted); }
+.career-promo .state-switch { display: flex; justify-content: center; margin: 55px 0 35px; }
+.career-promo .state-btn {
+  padding: 13px 24px;
+  border: 1px solid var(--ink);
+  background: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+.career-promo .state-btn + .state-btn { border-left: 0; }
+.career-promo .state-btn.active { background: var(--ink); color: #fff; }
+.career-promo .state-btn.active:focus-visible { outline-color: var(--mint); }
+.career-promo .reserve-form { padding: 55px; background: #fff; }
+.career-promo .summary-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding: 20px 22px;
+  background: var(--mint-soft);
+}
+.career-promo .phone-check-note {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  column-gap: 12px;
+  align-items: center;
+  margin: 25px 0 22px;
+  padding: 16px 18px;
+  background: #fff4bf;
+  border-left: 5px solid #f0c928;
+}
+.career-promo .phone-check-note > span {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--text);
+  border-radius: 50%;
+  font-weight: 900;
+}
+.career-promo .phone-check-note strong { font-size: 14px; }
+.career-promo .phone-check-note small { margin-top: 4px; color: #68716e; font-size: 12px; }
+.career-promo .readonly-grid,
+.career-promo .input-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.career-promo .readonly-grid > div,
+.career-promo .input-grid > label,
+.career-promo .member-contact { display: flex; flex-direction: column; gap: 9px; }
+.career-promo .readonly-grid .field-label,
+.career-promo .input-grid label,
+.career-promo .member-contact label { font-size: 13px; font-weight: 700; }
+.career-promo .readonly-grid p,
+.career-promo .member-contact input,
+.career-promo .input-grid input {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  color: var(--text);
+}
+.career-promo .readonly-grid p { background: #f6f7f5; color: #87908d; font-size: 12px; }
+.career-promo .member-contact label b,
+.career-promo .required-channel > span b {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 3px 6px;
+  background: var(--text);
+  color: #fff;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+.career-promo .member-contact label b { margin-left: 4px; padding: 2px 5px; }
+.career-promo .input-grid input.invalid,
+.career-promo .member-contact input.invalid { border-color: var(--error); }
+.career-promo .input-error { min-height: 18px; color: var(--error); font-size: 11px; }
+.career-promo .login-note { margin: 25px 0; color: var(--muted); font-size: 13px; }
+.career-promo .login-note a { font-weight: 700; text-decoration: underline; }
+.career-promo .consent-panel { margin-top: 35px; padding-top: 30px; border-top: 2px solid var(--ink); }
+.career-promo .consent-title { font-weight: 900; }
+.career-promo .check-line,
+.career-promo label.check-line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 0;
+}
+.career-promo label.check-line { grid-template-columns: auto 1fr; cursor: pointer; }
+.career-promo .check-line > label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.career-promo .check-line.all { margin-bottom: 8px; border-bottom: 1px solid var(--ink); font-weight: 900; }
+.career-promo .check-line input,
+.career-promo .channels input { width: 18px; height: 18px; accent-color: #278f84; }
+.career-promo .check-line button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.career-promo .channels {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  width: 100%;
+  min-width: 0;
+  margin: 16px 0 12px;
+  padding: 16px 18px;
+  border: 1px solid #d4d8d4;
+  background: #f5f6f3;
+}
+.career-promo .channels > span { color: var(--text); font-size: 12px; font-weight: 700; }
+.career-promo .channels label { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+.career-promo .consent-copy,
+.career-promo .privacy-note { color: var(--muted); font-size: 12px; line-height: 1.65; }
+.career-promo .form-error { min-height: 22px; color: var(--error); font-size: 13px; }
+.career-promo .submit-reservation,
+.career-promo .sticky-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--cta);
+  background: var(--text);
+  color: #fff;
+  font-weight: 900;
+}
+.career-promo .submit-reservation {
+  width: 100%;
+  padding: 0 25px;
+  border: 0;
+  font-size: 17px;
+  cursor: pointer;
+}
+.career-promo .submit-reservation:disabled { opacity: 0.55; cursor: wait; }
+.career-promo .submit-reservation:focus-visible,
+.career-promo .sticky-cta a:focus-visible { outline-color: var(--mint); }
+
+/* 완료 */
+.career-promo .completion {
+  display: grid;
+  place-items: center;
+  min-height: 620px;
+  padding: 110px 24px;
+  background: var(--mint-soft);
+  text-align: center;
+}
+.career-promo .completion .eyebrow { color: var(--ink); font-size: 18px; line-height: 1.8; }
+.career-promo .completion h2 { color: var(--text); font-size: 72px; letter-spacing: -0.045em; text-shadow: none; }
+.career-promo .completion p { font-size: 18px; line-height: 1.8; }
+.career-promo .completion .already-copy { font-size: 14px; }
+.career-promo .already-btn { margin-top: 25px; border: 0; background: transparent; text-decoration: underline; cursor: pointer; }
+
+.career-promo .sticky-cta {
+  position: fixed;
+  z-index: 30;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: transform 0.3s;
+}
+.career-promo .sticky-cta.hidden { transform: translateY(100%); }
+.career-promo .sticky-cta a { width: min(620px, 100%); padding: 0 28px; }
+
+/* 동의 팝업 */
+.career-promo .detail-modal {
+  width: min(620px, calc(100% - 32px));
+  max-height: 84vh;
+  padding: 0;
+  border: 3px solid var(--text);
+  border-radius: 0;
+  color: var(--text);
+  box-shadow: 12px 14px 0 rgba(23, 25, 24, 0.25);
+}
+.career-promo .detail-modal::backdrop { background: rgba(12, 20, 19, 0.58); backdrop-filter: blur(3px); }
+.career-promo .detail-modal[open] { animation: career-modal-in 0.22s ease-out; }
+.career-promo .modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 62px;
+  padding: 0 20px;
+  background: var(--mint);
+  border-bottom: 3px solid var(--text);
+}
+.career-promo .modal-head p { margin: 0; font-size: 12px; font-weight: 900; letter-spacing: 0.08em; }
+.career-promo .modal-close { width: 36px; height: 36px; border: 0; background: transparent; font-size: 32px; line-height: 1; cursor: pointer; }
+.career-promo .detail-modal > h2 { margin: 30px 28px 12px; font-size: 34px; letter-spacing: -0.055em; }
+.career-promo .modal-lead { margin: 0 28px 25px; color: #5e6865; }
+.career-promo .modal-table { margin: 25px 28px; border-top: 2px solid var(--text); }
+.career-promo .modal-table > div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  padding: 17px 3px;
+  border-bottom: 1px solid #cdd2cf;
+}
+.career-promo .modal-table b { font-size: 14px; }
+.career-promo .modal-table p { margin: 0; color: #4f5956; font-size: 14px; line-height: 1.65; }
+.career-promo .modal-footnote { margin: 0 28px 20px; color: #66706d; font-size: 12px; line-height: 1.6; }
+.career-promo .modal-confirm {
+  width: calc(100% - 56px);
+  height: 58px;
+  margin: 0 28px 28px;
+  border: 0;
+  background: var(--text);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+}
+@keyframes career-modal-in {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1000px) {
+  .career-promo .empathy { grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
+  .career-promo .empathy > .section-no,
+  .career-promo .empathy > div:not(.company-illustration),
+  .career-promo .company-illustration { grid-column: 1; }
+  .career-promo .empathy > .section-no { grid-row: 1; }
+  .career-promo .empathy > div:not(.company-illustration) { grid-row: 2; }
+  .career-promo .company-illustration { grid-row: 3; width: min(340px, 100%); margin-top: 35px; }
+}
+
+@media (max-width: 860px) {
+  .career-promo .hero { grid-template-columns: 1fr; }
+  .career-promo .materials-head { display: block; }
+  .career-promo .card-controls { margin-top: 30px; }
+  .career-promo .field-section { grid-template-columns: 1fr; gap: 55px; }
+  .career-promo .field-copy { position: static; }
+  .career-promo .field-feedback { grid-column: 1; }
+  .career-promo .readonly-grid,
+  .career-promo .input-grid { grid-template-columns: 1fr; }
+  .career-promo .summary-box { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+@media (max-width: 560px) {
+  .career-promo .hero { min-height: 0; padding: 95px 20px 80px; }
+  .career-promo .hero h1 { font-size: 40px; }
+  .career-promo .hero-sub { font-size: 16px; }
+  .career-promo .hero-visual { height: 430px; margin-right: -20px; margin-left: -20px; }
+  .career-promo .book { width: 215px; height: 300px; padding: 24px 25px 24px 40px; }
+  .career-promo .book::before { width: 17px; }
+  .career-promo .book b { font-size: 31px; }
+  .career-promo .book i { font-size: 9px; }
+  .career-promo .book-back { right: 18px; }
+  .career-promo .book-front { left: 18px; }
+  .career-promo .date-line { bottom: 5px; }
+  .career-promo .empathy,
+  .career-promo .field-section { padding-top: 120px; padding-bottom: 120px; }
+  .career-promo .empathy h2 { font-size: 48px; }
+  .career-promo .empathy .section-no { margin-bottom: 0; }
+  .career-promo .company-illustration { width: 280px; height: 280px; margin: 30px auto 0; }
+  .career-promo .company-illustration span { right: -8px; }
+  .career-promo .materials { padding-top: 110px; }
+  .career-promo .materials h2,
+  .career-promo .field-section h2,
+  .career-promo .form-intro h2 { font-size: 44px; }
+  .career-promo .material-card { flex-basis: 84vw; height: 530px; }
+  .career-promo .material-card > p { font-size: 14px; }
+  .career-promo .field-options label { min-height: 94px; padding: 18px 20px; }
+  .career-promo .field-options span { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .career-promo .field-options b { font-size: 21px; }
+  .career-promo .field-options small { margin-top: 0; }
+  .career-promo .field-options i { align-self: center; }
+  .career-promo .reservation { padding: 110px 16px; }
+  .career-promo .reserve-form { padding: 28px 20px; }
+  .career-promo .phone-check-note { grid-template-columns: 30px 1fr; padding: 14px 13px; }
+  .career-promo .phone-check-note small { grid-column: 1 / -1; margin-top: 10px; line-height: 1.55; }
+  .career-promo .check-line:not(label) { grid-template-columns: 1fr; }
+  .career-promo .check-line button { justify-self: start; margin-left: 28px; text-align: left; }
+  .career-promo .channels { flex-wrap: wrap; gap: 12px; padding: 14px 12px; }
+  .career-promo .channels > span { width: 100%; }
+  .career-promo .completion h2 { font-size: 52px; }
+  .career-promo .detail-modal { max-height: 88vh; }
+  .career-promo .detail-modal > h2 { margin: 25px 20px 10px; font-size: 27px; }
+  .career-promo .modal-lead { margin: 0 20px 20px; }
+  .career-promo .modal-table { margin: 20px; }
+  .career-promo .modal-table > div { grid-template-columns: 1fr; gap: 6px; padding: 14px 2px; }
+  .career-promo .modal-footnote { margin: 0 20px 18px; }
+  .career-promo .modal-confirm { width: calc(100% - 40px); margin: 0 20px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.career-promo-page { scroll-behavior: auto; }
+  .career-promo .book,
+  .career-promo .detail-modal[open] { animation: none; }
+  .career-promo .book-front { transform: rotate(-5deg); }
+  .career-promo .book-back { transform: rotate(7deg); }
+  .career-promo .sticky-cta { transition: none; }
+}
