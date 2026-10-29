@@ -18,6 +18,7 @@
   const root = document.querySelector(".career-promo");
   if (!root) return;
 
+  const STORAGE_KEY = "career-promo-reservations";
   const PHONE = /^01[016789]-?\d{3,4}-?\d{4}$/;
   const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const COPY = {
@@ -33,6 +34,8 @@
     unavailable: "지금은 예약할 수 없어요. 잠시 후 다시 시도해 주세요.",
     pending: "예약하는 중이에요",
     submit: "취업 자료 예약하기",
+    done: "예약이 완료됐어요",
+    already: "이미 예약되어 있어요",
   };
 
   const config = {
@@ -267,7 +270,39 @@
     return data;
   }
 
+  function phoneKey(phone) {
+    return String(phone || "").replace(/\D/g, "");
+  }
+
+  function readReservations() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      return saved && typeof saved === "object" ? saved : {};
+    } catch {
+      return {};
+    }
+  }
+
+  function hasReservation(phone) {
+    const key = phoneKey(phone);
+    return Boolean(key && readReservations()[key]);
+  }
+
+  function rememberReservation(body) {
+    const key = phoneKey(body.contact?.phone);
+    if (!key) return;
+    try {
+      const saved = readReservations();
+      if (saved[key]) return;
+      saved[key] = { phone: key, at: new Date().toISOString() };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
+    } catch {
+      /* 저장을 못 해도 이번 화면의 신청은 막지 않습니다. */
+    }
+  }
+
   async function submitReservation(body) {
+    if (hasReservation(body.contact.phone)) return { status: "already_reserved" };
     let result = { status: "reserved" };
     if (config.endpoints.reservation) result = await postJson(config.endpoints.reservation, body);
     const status = result.status || "reserved";
@@ -281,13 +316,15 @@
       error.code = "failed";
       throw error;
     }
-    if (config.endpoints.consent) await postJson(config.endpoints.consent, consentRecord(body));
+    rememberReservation(body);
+    if (status === "reserved" && config.endpoints.consent) await postJson(config.endpoints.consent, consentRecord(body));
     return { ...result, status };
   }
 
   function showCompletion(status) {
     const already = status === "already_reserved";
     completion.hidden = false;
+    qs("#completionTitle").textContent = already ? COPY.already : COPY.done;
     alreadyCopy.hidden = !already;
     alreadyBtn.hidden = already;
     alreadyBtn.setAttribute("aria-expanded", "false");
@@ -306,8 +343,15 @@
     label.textContent = COPY.pending;
     try {
       const result = await submitReservation(body);
+      if (result.status === "already_reserved") {
+        form.dataset.submitting = "";
+        button.disabled = false;
+        label.textContent = COPY.submit;
+        showCompletion(result.status);
+        return;
+      }
       form.dataset.submitting = "done";
-      label.textContent = "예약이 완료됐어요";
+      label.textContent = COPY.done;
       showCompletion(result.status);
     } catch (error) {
       form.dataset.submitting = "";
